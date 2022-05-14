@@ -1,0 +1,254 @@
+<!-- <!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <title>محصولات شما</title>
+    <base href="/cart">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content=""> -->
+<!-- font ---------------------------------------->
+<!-- <link rel="stylesheet" href="/assets/css/vendor/font-awesome.min.css"> -->
+<!-- <link rel="stylesheet" href="/assets/css/vendor/materialdesignicons.css"> -->
+<!-- plugin -------------------------------------->
+<!-- <link rel="stylesheet" href="/assets/css/vendor/bootstrap.css"> -->
+<!-- <link rel="stylesheet" href="/assets/css/vendor/owl.carousel.min.css"> -->
+<!-- <link rel="stylesheet" href="/assets/css/vendor/nice-select.css"> -->
+<!-- main-style ---------------------------------->
+<!-- <link rel="stylesheet" href="/assets/css/main.css"> -->
+<!-- <link rel="stylesheet" href="/assets/css/responsive.css"> -->
+<!-- sweetalert2 ---------------------------------->
+<!-- <link rel="stylesheet" href="/assets/Sweetalert2/sweetalert2/dist/sweetalert2.min.css"> -->
+<!-- </head> -->
+
+<!-- <body> -->
+<!-- <script src="../../../assets/js/vendor/jquery-3.1.1.min.js"></script>
+<script src="../../../assets/js/vendor/jquery.easing.min.js" type="text/javascript"></script>
+<script src="../../../assets/js/vendor/scripts.js"></script> -->
+<section class="cart-home">
+    <div class="post-item-cart d-block order-2">
+        <div class="content-page">
+            <!-- end progressbar -->
+            <!-- start step one form -->
+            <form (submit)="RequestPay()"  id="msform">
+                <ul id="progressbar">
+                    <li class="active" id="account"><strong>اطلاعات سبد خرید</strong></li>
+                    <li id="personal"><strong>تعیین نوع حمل و نقل</strong></li>
+                    <li id="payment"><strong>پرداخت نهایی</strong></li>
+                </ul>
+                <fieldset>
+                    <div class="cart-form">
+                        <form class="c-form">
+                            <table class="table-cart cart table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="product-cart-name">نام محصول
+                                        </th>
+                                        <!-- <th scope="col" class="product-cart-name">رنگ بندی</th> -->
+                                        <th scope="col" class="product-cart-quantity">تعداد
+                                            مورد نیاز</th>
+                                        <th scope="col" class="product-cart-price">قیمت</th>
+                                        <th scope="col" class="product-cart-Total">مجموع
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of cartItems">
+                                        <th scope="row" class="product-cart-name">
+                                            <div class="product-thumbnail-img">
+                                                <a href="#">
+                                                    <img src="../assets/images/productImages/{{item.image}}">
+                                                </a>
+                                                <div class="product-remove">
+                                                    <a href="~/cart/remove?ProductId=@item.Id" class="remove">
+                                                        <i class="mdi mdi-close"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-title">
+                                                <a href="#">
+                                                    {{item.productName}}
+                                                </a>
+                                            </div>
+                                        </th>
+                                        <!-- <td>
+                                            <div class="row">
+                                                <div class="custom-radio-button">
+                                                    <div *ngFor="let color of item?.colors" style="margin-left: 50px;">
+                                                        <input type="radio">
+                                                        <label for="color-{{color}}">
+                                                            <span class="colors" (click)="setColor(color)">
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td> -->
+                                        <td class="product-cart-quantity">
+                                            <div class="required-number before">
+                                                <div class="quantity">
+                                                    <input type="number" min="1" max="100" step="1"
+                                                        value="{{item.count}}" id="{{item.Id}}">
+                                                    <div class="quantity-nav">
+                                                        <div class="quantity-button quantity-up"
+                                                            (click)="AddCount(item.Id)">+
+                                                        </div>
+                                                        <div class="quantity-button quantity-down"
+                                                            (click)="LowCount(item.Id)">-
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="product-cart-price">
+                                            <span class="amount">
+                                                {{item.price}}
+                                                <span>تومان</span>
+                                            </span>
+                                        </td>
+                                        <td class="product-cart-Total">
+                                            <span class="amount">
+                                                {{item.price * item.count}}
+                                                <span>تومان</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <li class="cart-subtotal" style="margin: 50px 100px 0 0;float: right;">
+                        <span class="amount"><strong style="white-space: pre;"> قیمت کل محصولات سبد </strong>
+                        </span><br />
+                        <span><strong style="white-space: pre;"> {{cart.sumAmount}} تومان </strong> </span>
+                    </li>
+                    <input type="button" name="next" class="next action-button" value="تایید"
+                        style="border-radius: 10px; margin: 200px 0 0 100px;float: left;" />
+                </fieldset>
+                <fieldset>
+                    <div class="cart-form" style="margin-top:50px">
+                        <div class="c-form">
+                            <table class="table-cart cart table table-borderless" style="margin-right:10px">
+                                <ul>
+                                    <li class="shipping-totals">
+                                        <span class="amount">روش حمل و نقل کالا را تعیین کنید:</span><br />
+                                        <div class="shipping-totals-item" style="margin-right: 10px;display:initial;">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="custom-radio-button">
+                                                        <div style="margin-left: 50px;">
+                                                            <div class="shipping-totals-title">
+                                                                حمل و نقل رایگان
+                                                            </div>
+                                                            <input type="radio" formControlName="transport"
+                                                                id="color1" value="حمل و نقل رایگان">
+                                                            <label for="customRadio1">
+                                                                <span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div style="margin-left: 50px;">
+                                                            <div class="shipping-totals-title">
+                                                                عادی
+                                                            </div>
+                                                            <input type="radio" formControlName="transport"
+                                                                id="color2" value="عادی">
+                                                            <label for="customRadio2">
+                                                                <span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div style="margin-left: 50px;">
+                                                            <div class="shipping-totals-title">
+                                                                استانی
+                                                            </div>
+                                                            <input type="radio" formControlName="transport"
+                                                                id="color3" value="استانی">
+                                                            <label for="customRadio3">
+                                                                <span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div style="margin-left: 50px;">
+                                                            <div class="shipping-totals-title">
+                                                                ویژه
+                                                            </div>
+                                                            <input type="radio" formControlName="transport"
+                                                                id="color4" value="ویژه">
+                                                            <label for="customRadio4">
+                                                                <span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="discount-code">
+                                        <div class=" align-items-center">
+                                            <div class="col-md-7 pr mt-5">
+                                                <div class="coupon">
+                                                    <input type="text" name="input-coupon" class="input-coupon-code"
+                                                        placeholder="اگر كد تخفیف دارید وارد نمایید:"
+                                                        style="max-width: 400px; margin-right: 30px;"
+                                                        formControlName="discountCode" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </table>
+                        </div>
+                    </div>
+                    <input type="button" name="next" class="next action-button" value="درگاه بانکی"
+                        style="border-radius: 10px;margin: 120px 0 0 100px;float: left;" />
+                    <input type="button" name="previous" class="previous action-button-previous" value="سبد خرید"
+                        style="border-radius: 10px;margin: 120px 0 0 10px;float: left;" />
+                </fieldset>
+                <fieldset>
+                    <div class="form-card row" style="margin-top:20px">
+                        <h4 class="Total-cart-total">مجموع کل سبد خرید</h4>
+                        <h6>با احتساب ۹٪ مالیات و اعمال تخفیف محصول یا کد تخفیف شما</h6>
+                    </div>
+                    <ul>
+                        <li class="order-total" style="float: right;margin: 20px 100px 0 0;">
+                            <span class="amount"><strong>مجموع</strong> </span>
+                            <span>
+                                <h6> {{cart.sumAmount}} تومان</h6>
+                            </span>
+                        </li>
+                    </ul>
+                    <br /><br /><br />
+                    <!-- <app-pay-ways></app-pay-ways> -->
+                    <button class="action-button"
+                        style="border-radius: 10px;background-color: green;margin: 120px 0 0 100px;float: left;">تسویه
+                        حساب</button>
+                    <input type="button" name="previous" class="previous action-button-previous" value="حمل و نقل"
+                        style="border-radius: 10px;margin: 120px 0 0 10px;float: left;" />
+                </fieldset>
+            </form>
+            <!-- end step one form -->
+            <!-- start step two form -->
+        </div>
+    </div>
+</section>
+<!-- </body> -->
+
+<!-- file js ---------------------------------------------------->
+<!-- <script src="../../../assets/js/vendor/jquery-3.2.1.min.js"></script> -->
+<!-- <script src="/assets/js/vendor/bootstrap.js"></script> -->
+<!-- plugin ----------------------------------------------------->
+<!-- <script src="/assets/js/vendor/owl.carousel.min.js"></script>
+<script src="/assets/js/vendor/jquery.countdown.js"></script>
+<script src="/assets/js/vendor/jquery.nice-select.min.js"></script> -->
+<!-- main js ---------------------------------------------------->
+<!-- <script src="/assets/js/main.js"></script> -->
+<!-- ajax js ---------------------------------------------------->
+<!-- <script src="/assets/js/ajax/ajax.js"></script> -->
+<!-- sweetalert2 ---------------------------------------------------->
+<!-- <script src="/assets/Sweetalert2/sweetalert2/dist/sweetalert2.min.js"></script> -->
+<!-- <script src="/assets/Sweetalert2/sweetalert2/dist/sweetalert2.all.min.js"></script> -->
+<!-- </html> -->

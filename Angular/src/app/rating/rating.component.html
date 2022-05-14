@@ -1,0 +1,5 @@
+<mat-icon *ngFor="let i of maxRatingArr; let index = index" (mouseenter)="handleMouseEnter(index)"
+    (mouseleave)="handleMouseLeave()" (click)="Rate(index)" [ngClass]="{checked: selectedRate > index}">
+    <i class="fa fa-trash"></i>
+    <!-- <img src="/assets/fonts/star-svgrepo-com.svg" style="max-height: 60px;" alt="امتیاز"> -->
+</mat-icon>

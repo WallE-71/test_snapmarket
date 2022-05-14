@@ -1,0 +1,8 @@
+{  
+    "/api/*": {  
+       "target": "http://localhost:44309",  
+       "secure": false,  
+       "logLevel": "debug"  
+    }  
+ } 
+ // "start": "ng serve --port 4599 --proxy-config proxy.conf.json",

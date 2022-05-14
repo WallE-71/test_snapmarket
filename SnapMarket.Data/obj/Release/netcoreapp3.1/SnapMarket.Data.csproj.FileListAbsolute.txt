@@ -1,0 +1,17 @@
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\bin\Release\netcoreapp3.1\SnapMarket.Data.deps.json
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\bin\Release\netcoreapp3.1\SnapMarket.Data.dll
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\bin\Release\netcoreapp3.1\SnapMarket.Data.pdb
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\bin\Release\netcoreapp3.1\SnapMarket.Common.dll
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\bin\Release\netcoreapp3.1\SnapMarket.Entities.dll
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\bin\Release\netcoreapp3.1\SnapMarket.ViewModels.dll
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\bin\Release\netcoreapp3.1\SnapMarket.ViewModels.pdb
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\bin\Release\netcoreapp3.1\SnapMarket.Common.pdb
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\bin\Release\netcoreapp3.1\SnapMarket.Entities.pdb
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\obj\Release\netcoreapp3.1\SnapMarket.Data.csproj.AssemblyReference.cache
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\obj\Release\netcoreapp3.1\SnapMarket.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\obj\Release\netcoreapp3.1\SnapMarket.Data.AssemblyInfoInputs.cache
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\obj\Release\netcoreapp3.1\SnapMarket.Data.AssemblyInfo.cs
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\obj\Release\netcoreapp3.1\SnapMarket.Data.csproj.CoreCompileInputs.cache
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\obj\Release\netcoreapp3.1\SnapMarket.Data.csproj.CopyComplete
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\obj\Release\netcoreapp3.1\SnapMarket.Data.dll
+C:\Other\Training\Asp.Net Core\SnapMarket\SnapMarket.Data\obj\Release\netcoreapp3.1\SnapMarket.Data.pdb

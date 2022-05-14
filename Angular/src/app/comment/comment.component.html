@@ -1,0 +1,91 @@
+<!-- @model NewsWebsite.ViewModels.Home.NewsDetailsViewModel
+@using NewsWebsite.Common.Extensions
+@using NewsWebsite.ViewModels.Comments -->
+
+<style>
+    .post-meta.d-flex a i {
+        font-size: 15px !important;
+    }
+</style>
+
+<section class="post-details-area mb-80">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="cul-12 col-lg-9 col-xl-8">
+                <div class="post-details-content">
+                    <div class="blog-content">
+                        <div class="comment_area clearfix mb-50">
+                            <div class="section-heading style-2">
+                                <h4>نظرات</h4>
+                                <div class="line"></div>
+                            </div>
+                            <ul *ngIf="productComments?.length != 0">
+                                <li *ngFor="let comment of productComments" class="single_comment_area">
+                                    <div id="comment-{{comment.Id}}" class="comment-content d-flex">
+                                        <div class="comment-author">
+                                            <img src="/assets/images/profile.png" style="max-height: 60px;"
+                                                alt="نویسنده">
+                                        </div>
+                                        <div class="comment-meta">
+                                            <a href="#" class="comment-date">{{comment.persianInsertTime}}</a>
+                                            <span class="d-flex justify-content-between mb-30">
+                                                <div class="post-meta d-flex">
+                                                    <a style="white-space: pre;" (click)="LikeOrDisLike(comment.Id, true)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span style="white-space: pre;" id="commentlike+{{comment.Id}}"> {{comment.numberOfLike}} </span></a>
+                                                    <a style="white-space: pre;" (click)="LikeOrDisLike(comment.Id, false)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span style="white-space: pre;" id="commentdislike+{{comment.Id}}"> {{comment.numberOfDisLike}} </span></a>
+                                                </div>
+                                            </span>
+                                            <h6>{{comment.name}}</h6>
+                                            <p>{{comment.description}}</p>
+                                            <div class="d-flex align-items-center">
+                                                <a id="btn-+{{comment.id}}"
+                                                    (click)="ShowCommentForm(comment.id, comment.productId)"
+                                                    class="reply">پاسخ</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul *ngIf="comment?.subComments?.length != 0" class="children">
+                                        <li *ngFor="let sub of comment.subComments" class="single_comment_area">
+                                            <div id="comment-+{{sub.id}}" class="comment-content d-flex">
+                                                <div class="comment-author">
+                                                    <img src="/assets/images/man-avatar.png" style="max-height: 60px;"
+                                                        alt="پاسخ دهنده">
+                                                </div>
+                                                <div class="comment-meta">
+                                                    <a href="#" class="comment-date">{{sub.persianInsertTime}}</a>
+                                                    <span class="d-flex justify-content-between mb-30">
+                                                        <div class="post-meta d-flex">
+                                                            <a style="white-space: pre;" (click)="LikeOrDisLikeOfSubComments(sub.Id, true)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span style="white-space: pre;" id="sublike+{{sub.Id}}"> {{sub.numberOfLike}} </span></a>
+                                                            <a style="white-space: pre;" (click)="LikeOrDisLikeOfSubComments(sub.Id, false)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span style="white-space: pre;" id="subdislike+{{sub.Id}}"> {{sub.numberOfDisLike}} </span></a>
+                                                        </div>
+                                                    </span>
+                                                    <h6>{{sub.name}}</h6>
+                                                    <p>{{sub.description}}</p>
+                                                    <div class="d-flex align-items-center">
+                                                        <a id="btn-+{{sub.id}}"
+                                                            (click)="ShowCommentForm(sub.id, comment.productId)"
+                                                            class="reply">پاسخ</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <app-sub-comments *ngIf="sub?.subComments?.length != 0" [subComments]="sub?.subComments"></app-sub-comments>                                   
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p *ngIf="productComments.length == 0" class="alert alert-info mb-0">دیدگاهی برای این محصول
+                                ارسال نشده است.</p>
+                        </div>
+                        <div class="post-a-comment-area">
+                            <div class="section-heading style-2">
+                                <br/> 
+                                <h4>ارسال دیدگاه</h4>
+                                <div class="line"></div>
+                                <app-send-comment></app-send-comment>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
